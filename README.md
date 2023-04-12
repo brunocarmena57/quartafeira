@@ -48,4 +48,4 @@ PUT /recipes: Salva uma receita favorita do usuário no banco de dados.
 
 POST /recipes: Cria uma nova receita no banco de dados.
 
-Esse projeto foi desenvolvido para entrega na aula de Tópicos Especiais de Sistemas, criado por mim.
+Esse projeto foi desenvolvido para entrega na aula de Tópicos Especiais de Sistemas.
