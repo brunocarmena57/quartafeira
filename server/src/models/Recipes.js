@@ -1,5 +1,6 @@
-import mongoose from "mongoose"; 
+import mongoose from "mongoose";  // Importando biblioteca Mongoose para interação com MongoDB
 
+// Criando um novo schema do Mongoose para as receitas
 const RecipeSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -19,8 +20,9 @@ const RecipeSchema = new mongoose.Schema({
         required: true},
     userOwner:
         {type: mongoose.Schema.Types.ObjectId, 
-        ref: "users", 
+        ref: "users",  // Referencia a coleção "users" no MongoDB
         required: true,},
 });
 
+// Cria modelo do Mongoose para o schema de receita e exporta ele
 export const RecipeModel = mongoose.model("recipes", RecipeSchema)

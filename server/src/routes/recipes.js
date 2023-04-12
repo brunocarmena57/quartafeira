@@ -4,8 +4,10 @@ import { RecipeModel } from "../models/Recipes.js";
 import { UserModel } from '../models/Usuario.js';
 import { verify } from 'jsonwebtoken';
 
+// Criando objeto Router do Express
 const router = express.Router();
 
+// Definindo o tipo GET no home para obter todas as receitas do banco
 router.get("/", async (req, res) => {
     try {
         const response = await RecipeModel.find({});
@@ -15,6 +17,7 @@ router.get("/", async (req, res) => {
     }
 });
 
+// Definindo o tipo POST para adicionar uma nova receita no banco
 router.post("/", verifyToken, async (req, res) => {
     const recipe = new RecipeModel (req.body);
     try {
@@ -25,6 +28,8 @@ router.post("/", verifyToken, async (req, res) => {
     }
 });
 
+
+// Definindo tipo POST para salvar a receita na lista de receitas salvas
 router.post("/", verifyToken, async (req, res) => {
     try {
         const recipe = await RecipeModel.findById(req.body.recipeID);
@@ -37,6 +42,7 @@ router.post("/", verifyToken, async (req, res) => {
     }
 });
 
+// Definindo tipo GET para obter as IDs das receitas salvas pelos usuários 
 router.get("/savedRecipes/ids/:userID", async (req, res) => {
     try {
         const user = await UserModel.findById(req.params.userID);
@@ -46,6 +52,7 @@ router.get("/savedRecipes/ids/:userID", async (req, res) => {
     }
 });
 
+// Definindo tipo GET para obter as informações das receitas salvas por um usuário
 router.get("/savedRecipes/:userID", async (req, res) => {
     try {
         const user = await UserModel.findById(req.params.userID);
@@ -58,4 +65,5 @@ router.get("/savedRecipes/:userID", async (req, res) => {
     }
 });
 
+// Exporta o objeto como módulo
 export { router as recipesRouter };

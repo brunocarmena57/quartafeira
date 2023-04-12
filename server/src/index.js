@@ -5,17 +5,22 @@ import mongoose from 'mongoose';
 import {userRouter} from './routes/usuario.js';
 import {recipesRouter} from './routes/recipes.js';
 
+// Inicializa o express
 const app = express()
 
+// Utilisa o middleware para lidar com requisições em formato JSON
 app.use(express.json());
 app.use(cors());
 
+// Define as rotas utilizadas
 app.use("/auth", userRouter);
 app.use("/recipes", recipesRouter);
 
+//Conecta com o MongoDB através do Mongoose
 mongoose.connect("mongodb+srv://brunocarmena:senha123@receitasapp2.w9qdgt9.mongodb.net/receitasapp2", {
     useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
+// Inicializa o servidor na porta 3002 (http://localhost:3002)
 app.listen(3002, () => console.log("Servidor inicializado!"));
