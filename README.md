@@ -5,9 +5,13 @@ Este é um aplicativo de receitas desenvolvido com React e Node.js, com um banco
 Para rodar o aplicativo, é necessário ter o Node.js instalado em seu computador. Siga as instruções abaixo para configurar o aplicativo:
 
 1.Clone este repositório em sua máquina local.
+
 2.Navegue para o diretório principal do aplicativo.
+
 3.Abra um terminal e execute o comando npm install para instalar as dependências.
+
 4.Execute o comando npm start para iniciar o aplicativo.
+
 
 O aplicativo consiste em dois componentes principais: Home e SavedRecipes. O componente Home exibe todas as receitas disponíveis e permite que os usuários salvem suas receitas favoritas. O componente SavedRecipes exibe as receitas salvas pelo usuário.
 
