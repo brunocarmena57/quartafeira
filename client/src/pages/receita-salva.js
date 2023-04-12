@@ -2,13 +2,17 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useGetUserID } from "../hooks/useGetUserID";
 
+// Componente
 export const SavedRecipes = () => {
+    // Declarção do estado das receitas salvas
     const [savedRecipes, setSavedRecipes] = useState([]);
     const userID = useGetUserID();
 
     useEffect(() => {
+        // Defince função async para buscar as receitas salvas
         const fetchSavedRecipe = async () => {
             try {
+                // Requisição GET para buscar receitas salvas
                 const response = await axios.get(`http://localhost:3002/savedRecipes/${userID}`);
                 setSavedRecipes(response.data.savedRecipes);
             } catch (err) {
@@ -16,10 +20,12 @@ export const SavedRecipes = () => {
             }
         };
 
+        // Chama a função de busca das receitas salvas executando uma vez
         fetchSavedRecipe();
     }, []);
 
 
+    // Formulário HTML
     return (
     <div>
         <h1>Receitas salvas</h1>

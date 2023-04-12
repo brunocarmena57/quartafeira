@@ -4,13 +4,16 @@ import { useGetUserID } from "../hooks/useGetUserID";
 import { useCookies } from "react-cookie";
 
 export const Home = () => {
+    // Declarando estados e hooks
     const [recipes, setRecipes] = useState([]);
     const [savedRecipes, setSavedRecipes] = useState([]);
     const [cookies, _] = useCookies(["access_token"]);
 
     const userID = useGetUserID();
 
+    // useEffect para carregar receitas e receitas salvas
     useEffect(() => {
+        // Função para buscar receitas
         const fetchRecipe = async () => {
             try {
                 const response = await axios.get("http://localhost:3002/recipes");
@@ -20,6 +23,7 @@ export const Home = () => {
             }
         };
 
+        // Função para buscar receitas salvas
         const fetchSavedRecipe = async () => {
             try {
                 const response = await axios.get(`http://localhost:3002/savedRecipes/ids/${userID}`);
@@ -31,9 +35,11 @@ export const Home = () => {
 
         fetchRecipe();
 
+        // Verifica se o usuário está logado e busca as receitas dele
         if (cookies.access_token) fetchSavedRecipe();
     }, []);
 
+    // Função para salvar uma receita
     const saveRecipe = async (recipeID) => {
         try {
             const response = await axios.put("http://localhost:3002/recipes", {recipeID, userID,}, { headers: { authorization: cookies.access_token } });
@@ -43,8 +49,10 @@ export const Home = () => {
         }
     };
 
+    // Função para verificar se uma receita está salva ou não
     const isRecipeSaved = (id) => savedRecipes.inclues(id);
 
+    // Render HTML do componente
     return (
     <div>
         <h1>Receitas</h1>
