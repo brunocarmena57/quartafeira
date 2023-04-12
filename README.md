@@ -35,9 +35,13 @@ O hook useGetUserID é responsável por buscar o ID do usuário armazenado no ar
 O aplicativo utiliza uma API RESTful desenvolvida exclusivamente para esse projeto em Node.js. A API possui os seguintes endpoints:
 
 GET /recipes: Retorna uma lista de todas as receitas disponíveis.
+
 GET /savedRecipes/:userID: Retorna uma lista de todas as receitas salvas pelo usuário com o ID especificado.
+
 GET /savedRecipes/ids/:userID: Retorna uma lista com os IDs de todas as receitas salvas pelo usuário com o ID especificado.
+
 PUT /recipes: Salva uma receita favorita do usuário no banco de dados.
+
 POST /recipes: Cria uma nova receita no banco de dados.
 
 Esse projeto foi desenvolvido para entrega na aula de Tópicos Especiais de Sistemas, criado por mim.
