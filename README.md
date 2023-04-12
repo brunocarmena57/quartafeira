@@ -1,5 +1,5 @@
 # Receitas App
-Este é um aplicativo de receitas desenvolvido com React e Node.js, com um banco de dados em MongoDB.
+Este é um aplicativo de receitas desenvolvido com React e Node.js, com um banco de dados em MongoDB, utilizando os requests solicitados.
 
 ## Configuração
 Para rodar o aplicativo, é necessário ter o Node.js instalado em seu computador. Siga as instruções abaixo para configurar o aplicativo:
