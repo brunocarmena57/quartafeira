@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+// Cria um esquema de receita com as propriedades necessárias
 const recipeSchema = mongoose.Schema({
   name: {
     type: String,
@@ -31,4 +32,5 @@ const recipeSchema = mongoose.Schema({
   },
 });
 
+// Cria um modelo de receita com base no esquema criado acima
 export const RecipesModel = mongoose.model("Recipes", recipeSchema);
