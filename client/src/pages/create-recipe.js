@@ -4,9 +4,12 @@ import { useGetUserID } from "../hooks/useGetUserID";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
+// Componente de criação da receita
 export const CreateRecipe = () => {
+  // Obtém ID de quem está criando
   const userID = useGetUserID();
   const [cookies, _] = useCookies(["access_token"]);
+  // Estado inicial da receita
   const [recipe, setRecipe] = useState({
     name: "",
     description: "",
@@ -19,11 +22,13 @@ export const CreateRecipe = () => {
 
   const navigate = useNavigate();
 
+  // Atualiza o estado da receita
   const handleChange = (event) => {
     const { name, value } = event.target;
     setRecipe({ ...recipe, [name]: value });
   };
 
+  // Atualiza o estado os ingredientes
   const handleIngredientChange = (event, index) => {
     const { value } = event.target;
     const ingredients = [...recipe.ingredients];
@@ -31,14 +36,17 @@ export const CreateRecipe = () => {
     setRecipe({ ...recipe, ingredients });
   };
 
+  // Adiciona um novo ingrediente ao estado de ingredientes
   const handleAddIngredient = () => {
     const ingredients = [...recipe.ingredients, ""];
     setRecipe({ ...recipe, ingredients });
   };
 
+  // Submit realizado no formulário de criação da receita
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      // Envia POST com os dados da receita
       await axios.post(
         "http://localhost:3002/recipes",
         { ...recipe },
@@ -54,11 +62,12 @@ export const CreateRecipe = () => {
     }
   };
 
+  // Retorna o formulário HTML de criação de receita
   return (
     <div className="create-recipe">
-      <h2>Create Recipe</h2>
+      <h2>Criar Receita</h2>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Name</label>
+        <label htmlFor="name">Nome</label>
         <input
           type="text"
           id="name"
@@ -66,14 +75,14 @@ export const CreateRecipe = () => {
           value={recipe.name}
           onChange={handleChange}
         />
-        <label htmlFor="description">Description</label>
+        <label htmlFor="description">Descrição</label>
         <textarea
           id="description"
           name="description"
           value={recipe.description}
           onChange={handleChange}
         ></textarea>
-        <label htmlFor="ingredients">Ingredients</label>
+        <label htmlFor="ingredients">Ingredientes</label>
         {recipe.ingredients.map((ingredient, index) => (
           <input
             key={index}
@@ -84,16 +93,16 @@ export const CreateRecipe = () => {
           />
         ))}
         <button type="button" onClick={handleAddIngredient}>
-          Add Ingredient
+          Adicionar Ingrediente
         </button>
-        <label htmlFor="instructions">Instructions</label>
+        <label htmlFor="instructions">Instruções</label>
         <textarea
           id="instructions"
           name="instructions"
           value={recipe.instructions}
           onChange={handleChange}
         ></textarea>
-        <label htmlFor="imageUrl">Image URL</label>
+        <label htmlFor="imageUrl">URL da imagem</label>
         <input
           type="text"
           id="imageUrl"
@@ -101,7 +110,7 @@ export const CreateRecipe = () => {
           value={recipe.imageUrl}
           onChange={handleChange}
         />
-        <label htmlFor="cookingTime">Cooking Time (minutes)</label>
+        <label htmlFor="cookingTime">Tempo de cocção (minutos)</label>
         <input
           type="number"
           id="cookingTime"
@@ -109,7 +118,7 @@ export const CreateRecipe = () => {
           value={recipe.cookingTime}
           onChange={handleChange}
         />
-        <button type="submit">Create Recipe</button>
+        <button type="submit">Criar Receita</button>
       </form>
     </div>
   );

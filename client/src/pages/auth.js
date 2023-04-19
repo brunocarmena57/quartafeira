@@ -3,6 +3,7 @@ import axios from "axios";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 
+// Componente que renderiza o formulário de login e registro
 export const Auth = () => {
   return (
     <div className="auth">
@@ -12,6 +13,7 @@ export const Auth = () => {
   );
 };
 
+// Componente do formulário de login
 const Login = () => {
   const [_, setCookies] = useCookies(["access_token"]);
 
@@ -24,12 +26,15 @@ const Login = () => {
     event.preventDefault();
 
     try {
+      // faz uma solicitação POST para a API de autenticação com as credenciais do usuário
       const result = await axios.post("http://localhost:3002/auth/login", {
         username,
         password,
       });
 
+      // define o cookie "access_token" com o token de autenticação
       setCookies("access_token", result.data.token);
+      // armazena o ID do usuário no armazenamento local do navegador
       window.localStorage.setItem("userID", result.data.userID);
       navigate("/");
     } catch (error) {
@@ -37,12 +42,13 @@ const Login = () => {
     }
   };
 
+  // Retorna componente HTML de login
   return (
     <div className="auth-container">
       <form onSubmit={handleSubmit}>
         <h2>Login</h2>
         <div className="form-group">
-          <label htmlFor="username">Username:</label>
+          <label htmlFor="username">Usuário:</label>
           <input
             type="text"
             id="username"
@@ -51,7 +57,7 @@ const Login = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password">Senha:</label>
           <input
             type="password"
             id="password"
@@ -65,6 +71,7 @@ const Login = () => {
   );
 };
 
+// Componente do formulário de cadastro
 const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -85,12 +92,13 @@ const Register = () => {
     }
   };
 
+  // Retorna componente HTML de cadastro
   return (
     <div className="auth-container">
       <form onSubmit={handleSubmit}>
-        <h2>Register</h2>
+        <h2>Cadastro</h2>
         <div className="form-group">
-          <label htmlFor="username">Username:</label>
+          <label htmlFor="username">Usuário:</label>
           <input
             type="text"
             id="username"
@@ -99,7 +107,7 @@ const Register = () => {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password">Senha:</label>
           <input
             type="password"
             id="password"
@@ -107,7 +115,7 @@ const Register = () => {
             onChange={(event) => setPassword(event.target.value)}
           />
         </div>
-        <button type="submit">Register</button>
+        <button type="submit">Cadastre-se já!</button>
       </form>
     </div>
   );

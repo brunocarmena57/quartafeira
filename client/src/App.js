@@ -6,6 +6,7 @@ import { Auth } from "./pages/auth";
 import { CreateRecipe } from "./pages/create-recipe";
 import { Home } from "./pages/home";
 import { SavedRecipes } from "./pages/saved-recipes";
+
 // Função principal do App.js com as Routes utilizando react
 function App() {
   return (

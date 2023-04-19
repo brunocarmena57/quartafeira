@@ -3,12 +3,15 @@ import { useGetUserID } from "../hooks/useGetUserID";
 import axios from "axios";
 
 export const SavedRecipes = () => {
+  // Declarção do estado das receitas salvas
   const [savedRecipes, setSavedRecipes] = useState([]);
   const userID = useGetUserID();
 
   useEffect(() => {
+    // Defince função async para buscar as receitas salvas
     const fetchSavedRecipes = async () => {
       try {
+        // Requisição GET para buscar receitas salvas
         const response = await axios.get(
           `http://localhost:3002/recipes/savedRecipes/${userID}`
         );
@@ -18,11 +21,14 @@ export const SavedRecipes = () => {
       }
     };
 
+    // Chama a função de busca das receitas salvas executando uma vez
     fetchSavedRecipes();
   }, []);
+
+  // Formulário HTML
   return (
     <div>
-      <h1>Saved Recipes</h1>
+      <h1>Receitas salvas</h1>
       <ul>
         {savedRecipes.map((recipe) => (
           <li key={recipe._id}>
@@ -31,7 +37,7 @@ export const SavedRecipes = () => {
             </div>
             <p>{recipe.description}</p>
             <img src={recipe.imageUrl} alt={recipe.name} />
-            <p>Cooking Time: {recipe.cookingTime} minutes</p>
+            <p>Tempo de Cocção: {recipe.cookingTime} minutos</p>
           </li>
         ))}
       </ul>
