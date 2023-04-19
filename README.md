@@ -12,6 +12,7 @@ Para rodar o aplicativo, é necessário ter o Node.js instalado em seu computado
 
 4.Execute o comando npm start para iniciar o aplicativo.
 
+5. Outras configurações de banco de dados deverão ser feitas para inicializar ele.
 
 O aplicativo consiste em dois componentes principais: Home e SavedRecipes. O componente Home exibe todas as receitas disponíveis e permite que os usuários salvem suas receitas favoritas. O componente SavedRecipes exibe as receitas salvas pelo usuário.
 
