@@ -10,6 +10,7 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: #FFFDD0;
 }
 
 .auth {
@@ -17,7 +18,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #f2f2f2;
+  background-color: #FFFDD0;
 }
 
 .auth-container {
@@ -30,7 +31,8 @@ body {
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   margin: 20px;
-  width: 400px;
+  width: 500px;
+  margin-bottom: 400px;
 }
 
 .form-group {
@@ -67,6 +69,7 @@ a {
   text-decoration: none;
   margin: 10px;
   font-size: 25px;
+  margin-left: 50px;
 }
 
 .create-recipe {
@@ -75,7 +78,7 @@ a {
   justify-content: center;
   align-items: center;
   padding: 20px;
-  background-color: white;
+  background-color: transparent;
   border-radius: 5px;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   margin: 20px;
