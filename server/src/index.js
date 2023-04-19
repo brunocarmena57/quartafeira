@@ -17,7 +17,7 @@ app.use("/auth", userRouter);
 app.use("/recipes", recipesRouter);
 
 //Conecta com o MongoDB através do Mongoose
-mongoose.connect("mongodb+srv://brunocarmena:senha123@receitasapp2.w9qdgt9.mongodb.net/receitasapp2", {
+mongoose.connect("mongodb+srv://brunorcarmena1:senha12@receitasapp.rhynchx.mongodb.net/test", {
     useNewUrlParser: true,
   useUnifiedTopology: true,
 });
